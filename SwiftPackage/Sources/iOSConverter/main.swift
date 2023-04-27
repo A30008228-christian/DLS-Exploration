@@ -148,7 +148,11 @@ func tokenToAsset(token: TokenType) -> ColorAsset {
 }
 
 let filePath = "tokens.json"
-let data = Data(example.utf8)
+let fileManager = FileManager.default
+
+guard let data = fileManager.contents(atPath: "\(fileManager.currentDirectoryPath)/../tokens.json") else {
+  throw TokenError.Placeholder
+}
 do {
   // Extract from file
   // Decode
@@ -160,8 +164,7 @@ do {
 
   let data = try JSONEncoder().encode(tokens.map { tokenToAsset(token: $0) })
 
-  let fileManager = FileManager.default
-  print(String(data:data, encoding: .utf8))
+
 
   let encoder = JSONEncoder()
   encoder.outputFormatting = .prettyPrinted
