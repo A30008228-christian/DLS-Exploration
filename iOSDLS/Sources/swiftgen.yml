@@ -1,0 +1,12 @@
+input_dir: Resources
+output_dir: Resources
+xcassets:
+  inputs:
+    - Colors.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets.swift
+    params:
+      enumName: Colors
+      publicAccess: true
+      forceProvidesNamespaces: true
